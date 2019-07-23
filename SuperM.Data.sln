@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29025.244
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperM.Redis", "SuperM.Redis\SuperM.Redis.csproj", "{4987B0B3-40BF-4BFF-ACA7-F8EBEA393529}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperM.EF", "SuperM.EF\SuperM.EF.csproj", "{A26C88E0-A3A5-4324-B48F-B1B4F47AD78A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperM.Dapper", "SuperM.Dapper\SuperM.Dapper.csproj", "{2076C644-ABA0-4E57-90AF-7A28B025CF36}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperM.MongoDB", "SuperM.MongoDB\SuperM.MongoDB.csproj", "{02FB1DDA-1B3E-4870-9B0E-B1D35F9C9FC1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4987B0B3-40BF-4BFF-ACA7-F8EBEA393529}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4987B0B3-40BF-4BFF-ACA7-F8EBEA393529}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4987B0B3-40BF-4BFF-ACA7-F8EBEA393529}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4987B0B3-40BF-4BFF-ACA7-F8EBEA393529}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A26C88E0-A3A5-4324-B48F-B1B4F47AD78A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A26C88E0-A3A5-4324-B48F-B1B4F47AD78A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A26C88E0-A3A5-4324-B48F-B1B4F47AD78A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A26C88E0-A3A5-4324-B48F-B1B4F47AD78A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2076C644-ABA0-4E57-90AF-7A28B025CF36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2076C644-ABA0-4E57-90AF-7A28B025CF36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2076C644-ABA0-4E57-90AF-7A28B025CF36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2076C644-ABA0-4E57-90AF-7A28B025CF36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02FB1DDA-1B3E-4870-9B0E-B1D35F9C9FC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02FB1DDA-1B3E-4870-9B0E-B1D35F9C9FC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02FB1DDA-1B3E-4870-9B0E-B1D35F9C9FC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02FB1DDA-1B3E-4870-9B0E-B1D35F9C9FC1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5675EFF8-B66D-402D-BCD0-1407402DFBD1}
+	EndGlobalSection
+EndGlobal
