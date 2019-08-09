@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore.Storage;
-using SuperM.EF.PageModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -70,37 +69,43 @@ namespace SuperM.EF.Repositories
         /// 分页查询
         /// </summary>
         /// <typeparam name="T">类型</typeparam>
-        /// <param name="Pagination">分页参数</param>
+        /// <param name="page">页数</param>
+        /// <param name="size">行数</param>
         /// <param name="totalcount">总数</param>
         /// <returns></returns>
-        IQueryable<T> IQueryableByPage<T>(Pagination Pagination, out int totalcount) where T : class;
+        IQueryable<T> IQueryableByPage<T>(int page, int size, out int totalcount) where T : class;
 
         /// <summary>
         /// 分页条件查询
         /// </summary>
         /// <typeparam name="T">类型</typeparam>
         /// <param name="condition">表达式</param>
-        /// <param name="Pagination">分页参数</param>
+        /// <param name="page">页数</param>
+        /// <param name="size">行数</param>
         /// <param name="totalcount">总数</param>
         /// <returns></returns>
-        IQueryable<T> IQueryableByPage<T>(Expression<Func<T, bool>> condition, Pagination Pagination, out int totalcount) where T : class;
+        IQueryable<T> IQueryableByPage<T>(Expression<Func<T, bool>> condition, int page, int size, out int totalcount) where T : class;
 
         /// <summary>
         /// 分页查询
         /// </summary>
         /// <typeparam name="T">类型</typeparam>
+        /// <param name="page">页数</param>
+        /// <param name="size">行数</param>
         /// <param name="totalcount">总数</param>
         /// <returns></returns>
-        List<T> FindListByPage<T>(Pagination Pagination, out int totalcount) where T : class;
+        List<T> FindListByPage<T>(int page, int size, out int totalcount) where T : class;
 
         /// <summary>
         /// 分页条件查询
         /// </summary>
         /// <typeparam name="T">类型</typeparam>
         /// <param name="condition">表达式</param>
+        /// <param name="page">页数</param>
+        /// <param name="size">行数</param>
         /// <param name="totalcount">总数</param>
         /// <returns></returns>
-        List<T> FindListByPage<T>(Expression<Func<T, bool>> condition, Pagination Pagination, out int totalcount) where T : class;
+        List<T> FindListByPage<T>(Expression<Func<T, bool>> condition, int page, int size, out int totalcount) where T : class;
 
         /// <summary>
         /// 获取总数
