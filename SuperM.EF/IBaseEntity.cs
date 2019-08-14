@@ -1,6 +1,6 @@
 ﻿namespace SuperM.EF
 {
-    public interface IEFEntity
+    public interface IBaseEntity
     {
     }
 }

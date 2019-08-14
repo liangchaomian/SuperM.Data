@@ -11,5 +11,10 @@
         /// 数据库类型
         /// </summary>
         public static DataBaseType EFDataType { get; set; }
+
+        /// <summary>
+        /// 模型Dll名
+        /// </summary>
+        public static string ModelDll { get; set; }
     }
 }
