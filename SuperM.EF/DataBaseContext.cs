@@ -48,19 +48,22 @@ namespace SuperM.EF
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            var modelDll = string.IsNullOrEmpty(EFConfiguration.ModelDll) ? "*" : "";
-            foreach (string file in Directory.GetFiles(PlatformServices.Default.Application.ApplicationBasePath, $"{modelDll}.dll"))
+            if (EFConfiguration.LoadDll)
             {
-                var assemblyName = AssemblyName.GetAssemblyName(file);
-                AppDomain.CurrentDomain.Load(assemblyName);
+                var modelDll = string.IsNullOrEmpty(EFConfiguration.ModelDll) ? "*" : "";
+                foreach (string file in Directory.GetFiles(PlatformServices.Default.Application.ApplicationBasePath, $"{modelDll}.dll"))
+                {
+                    var assemblyName = AssemblyName.GetAssemblyName(file);
+                    AppDomain.CurrentDomain.Load(assemblyName);
+                }
+                var types = AppDomain.CurrentDomain.GetAssemblies()
+                  .SelectMany(a => a.GetTypes().Where(t => t.BaseType == typeof(IBaseEntity)))
+                  .ToList();
+                types.ForEach(item => {
+                    modelBuilder.Model.AddEntityType(item);
+                });
+                base.OnModelCreating(modelBuilder);
             }
-            var types = AppDomain.CurrentDomain.GetAssemblies()
-              .SelectMany(a => a.GetTypes().Where(t => t.BaseType == typeof(IBaseEntity)))
-              .ToList();
-            types.ForEach(item=> {
-                modelBuilder.Model.AddEntityType(item);
-            });
-            base.OnModelCreating(modelBuilder);
         }
 
     }
