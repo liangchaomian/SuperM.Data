@@ -50,14 +50,15 @@ namespace SuperM.EF
         {
             if (EFConfiguration.LoadDll)
             {
-                var modelDll = string.IsNullOrEmpty(EFConfiguration.ModelDll) ? "*" : "";
+                var modelDll = string.IsNullOrEmpty(EFConfiguration.ModelDll) ? "*" : EFConfiguration.ModelDll;
                 foreach (string file in Directory.GetFiles(PlatformServices.Default.Application.ApplicationBasePath, $"{modelDll}.dll"))
                 {
                     var assemblyName = AssemblyName.GetAssemblyName(file);
                     AppDomain.CurrentDomain.Load(assemblyName);
                 }
+                var baseEntityType = typeof(IBaseEntity);
                 var types = AppDomain.CurrentDomain.GetAssemblies()
-                  .SelectMany(a => a.GetTypes().Where(t => t.BaseType == typeof(IBaseEntity)))
+                  .SelectMany(a => a.GetTypes().Where(t => baseEntityType.IsAssignableFrom(t) && t.Name != "IBaseEntity"))
                   .ToList();
                 types.ForEach(item => {
                     modelBuilder.Model.AddEntityType(item);

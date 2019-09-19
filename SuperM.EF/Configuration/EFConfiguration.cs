@@ -18,7 +18,7 @@
         public static bool LoadDll { get; set; } = false;
 
         /// <summary>
-        /// 模型Dll名
+        /// 模型Dll名，
         /// </summary>
         public static string ModelDll { get; set; }
 
