@@ -287,10 +287,24 @@ namespace SuperM.EF.Repositories
         /// <typeparam name="T">实体</typeparam>
         /// <param name="condition">条件</param>
         /// <returns></returns>
-        public int DeleteEntityList<T>(Expression<Func<T, bool>> condition) where T : class
+        public int DeleteEntityListByCondition<T>(Expression<Func<T, bool>> condition) where T : class
         {
             var entityList = EfdDbContext.Set<T>().Where(condition).ToList();
             entityList.ForEach(e =>
+            {
+                EfdDbContext.Set<T>().Remove(e);
+            });
+            return EfdDbContext.SaveChanges();
+        }
+
+        /// <summary>
+        /// 根据条件批量删除
+        /// </summary>
+        /// <typeparam name="entitys">实体列表</typeparam>
+        /// <returns></returns>
+        public int DeleteEntityList<T>(List<T> entitys) where T : class
+        {
+            entitys.ForEach(e =>
             {
                 EfdDbContext.Set<T>().Remove(e);
             });

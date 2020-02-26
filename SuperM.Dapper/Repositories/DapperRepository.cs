@@ -6,6 +6,7 @@ using System.Data.OracleClient;
 using System.Data.SqlClient;
 using Dapper;
 using System.Data;
+using System.Collections.Generic;
 
 namespace SuperM.Dapper.Repositories
 {
@@ -81,6 +82,28 @@ namespace SuperM.Dapper.Repositories
             OpenConnection();
             //执行Sql
             return DbConnection.Execute(sql, para);
+        }
+
+        /// <summary>
+        /// 查出多条记录的实体
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="sql"></param>
+        /// <returns></returns>
+        public IEnumerable<T> Query<T>(string sql, object param = null)
+        {
+            return DbConnection.Query<T>(sql, param);
+        }
+
+        /// <summary>
+        /// 查出一条记录的实体
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="sql"></param>
+        /// <returns></returns>
+        public T QueryFirstOrDefault<T>(string sql, object param = null)
+        {
+            return DbConnection.QueryFirst<T>(sql, param);
         }
 
         /// <summary>
