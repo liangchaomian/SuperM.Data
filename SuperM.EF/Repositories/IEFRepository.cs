@@ -172,13 +172,6 @@ namespace SuperM.EF.Repositories
         int DeleteEntityListByCondition<T>(Expression<Func<T, bool>> condition) where T : class;
 
         /// <summary>
-        /// 根据条件批量删除
-        /// </summary>
-        /// <typeparam name="entitys">实体列表</typeparam>
-        /// <returns></returns>
-        int DeleteEntityList<T>(List<T> entitys) where T : class;
-
-        /// <summary>
         /// 批量修改
         /// </summary>
         /// <typeparam name="T">类型</typeparam>

@@ -3,7 +3,6 @@
     public class MongoDBConfiguration
     {
         //mongodb://127.0.0.1:27017
-        //mongodb://useradmin:adminpassword@120.24.75.186:27017
         /// <summary>
         /// MongoDB连接字符串
         /// </summary>

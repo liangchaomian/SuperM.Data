@@ -13,8 +13,12 @@ namespace SuperM.EF
         /// <summary>
         /// EF连接字符串
         /// </summary>
-        public string ConnectionString { get; set; }
+        private string ConnectionString { get; set; }
 
+        /// <summary>
+        /// 数据库类型
+        /// </summary>
+        private DataBaseType BaseType { get; set; } = EFConfiguration.EFDataType;
 
         /// <summary>
         /// 设置连接字符串
@@ -24,9 +28,20 @@ namespace SuperM.EF
         {
             ConnectionString = string.IsNullOrEmpty(connString) ? EFConfiguration.DefalutConnectionString : connString;
         }
+
+        /// <summary>
+        /// 设置连接字符串
+        /// </summary>
+        /// <param name="connString"></param>
+        public DataBaseContext(string connString = "", DataBaseType dataBaseType= DataBaseType.MySql)
+        {
+            BaseType = dataBaseType;
+            ConnectionString = string.IsNullOrEmpty(connString) ? EFConfiguration.DefalutConnectionString : connString;
+        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            switch (EFConfiguration.EFDataType)
+            switch (BaseType)
             {
                 case DataBaseType.SqlServer:
                     optionsBuilder

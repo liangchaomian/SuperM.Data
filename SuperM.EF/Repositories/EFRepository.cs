@@ -13,12 +13,12 @@ namespace SuperM.EF.Repositories
         /// <summary>
         /// 获取 当前使用的数据访问上下文对象
         /// </summary>
-        public DbContext EfdDbContext { get; set; }
+        private DbContext EfdDbContext { get; set; }
 
         /// <summary>
         /// 事务对象
         /// </summary>
-        public IDbContextTransaction DBTransaction { get; set; }
+        private IDbContextTransaction DBTransaction { get; set; }
 
         /// <summary>
         /// 初始化上下文（默认）
@@ -26,6 +26,14 @@ namespace SuperM.EF.Repositories
         public EFRepository(string connString=null)
         {
             EfdDbContext = new DataBaseContext(connString);
+        }
+
+        /// <summary>
+        /// 初始化上下文
+        /// </summary>
+        public EFRepository(DataBaseType dataBaseType,string connString = null)
+        {
+            EfdDbContext = new DataBaseContext(connString, dataBaseType);
         }
 
         /// <summary>
@@ -291,20 +299,6 @@ namespace SuperM.EF.Repositories
         {
             var entityList = EfdDbContext.Set<T>().Where(condition).ToList();
             entityList.ForEach(e =>
-            {
-                EfdDbContext.Set<T>().Remove(e);
-            });
-            return EfdDbContext.SaveChanges();
-        }
-
-        /// <summary>
-        /// 根据条件批量删除
-        /// </summary>
-        /// <typeparam name="entitys">实体列表</typeparam>
-        /// <returns></returns>
-        public int DeleteEntityList<T>(List<T> entitys) where T : class
-        {
-            entitys.ForEach(e =>
             {
                 EfdDbContext.Set<T>().Remove(e);
             });

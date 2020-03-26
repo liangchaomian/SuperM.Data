@@ -15,7 +15,7 @@
         /// <summary>
         /// 是否开启加载Dll
         /// </summary>
-        public static bool LoadDll { get; set; } = false;
+        public static bool LoadDll { get; set; } = true;
 
         /// <summary>
         /// 模型Dll名，
